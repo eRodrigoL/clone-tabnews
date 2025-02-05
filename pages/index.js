@@ -67,9 +67,9 @@ function Home() {
               textAlign: "justify",
             }}
           >
-            Desde sempre, sinto o seu amor e a sua dedicação. Tudo o que alcancei,
-            em qualquer momento da minha vida, teve a sua influência. Ora me
-            orientando, ora me apoiando, ora me oferecendo suporte.
+            Desde sempre, sinto o seu amor e a sua dedicação. Tudo o que
+            alcancei, em qualquer momento da minha vida, teve a sua influência.
+            Ora me orientando, ora me apoiando, ora me oferecendo suporte.
           </p>
           <p
             style={{
@@ -92,10 +92,10 @@ function Home() {
               textAlign: "justify",
             }}
           >
-            A conclusão da faculdade se aproxima, e confio que o futuro me reserva
-            um emprego remoto, um bom salário e uma vida com conforto, saúde e
-            maturidade financeira. E você terá feito parte disso. Mais uma vez:
-            obrigado!
+            A conclusão da faculdade se aproxima, e confio que o futuro me
+            reserva um emprego remoto, um bom salário e uma vida com conforto,
+            saúde e maturidade financeira. E você terá feito parte disso. É uma
+            benção ser seu filho e portanto eu repito: obrigado!
           </p>
         </main>
 
