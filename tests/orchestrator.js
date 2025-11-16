@@ -2,9 +2,9 @@ import retry from "async-retry";
 import database from "infra/database.js";
 
 async function waitForAllServices() {
-  await waitForAllServices();
+  await waitForWebServer();
 
-  async function waitForAllServices() {
+  async function waitForWebServer() {
     return retry(fetchStatusPage, {
       retries: 100,
       maxTimeout: 1000,
