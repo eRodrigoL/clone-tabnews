@@ -12,7 +12,9 @@ describe("GET /api/v1/users/[username]", () => {
     test("With exact case match", async () => {
       const response1 = await fetch("http://localhost:3000/api/v1/users", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           username: "MesmoCase",
           email: "mesmo.case@email.com",
@@ -47,10 +49,12 @@ describe("GET /api/v1/users/[username]", () => {
     test("With case mismatch", async () => {
       const response1 = await fetch("http://localhost:3000/api/v1/users", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           username: "CaseDiferente",
-          email: "email.diferente@email.com",
+          email: "case.diferente@email.com",
           password: "senha123",
         }),
       });
@@ -68,7 +72,7 @@ describe("GET /api/v1/users/[username]", () => {
       expect(response2Body).toEqual({
         id: response2Body.id,
         username: "CaseDiferente",
-        email: "email.diferente@email.com",
+        email: "case.diferente@email.com",
         password: "senha123",
         created_at: response2Body.created_at,
         updated_at: response2Body.updated_at,
@@ -90,8 +94,8 @@ describe("GET /api/v1/users/[username]", () => {
 
       expect(responseBody).toEqual({
         name: "NotFoundError",
-        message: "O usuário informado não foi encontrado no sistema.",
-        action: "Verifique se o usuário está digitado corretamente.",
+        message: "O username informado não foi encontrado no sistema.",
+        action: "Verifique se o username está digitado corretamente.",
         status_code: 404,
       });
     });

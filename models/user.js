@@ -23,14 +23,15 @@ async function findOneByUsername(username) {
 
     if (results.rowCount === 0) {
       throw new NotFoundError({
-        message: "O usuário informado não foi encontrado no sistema.",
-        action: "Verifique se o usuário está digitado corretamente.",
+        message: "O username informado não foi encontrado no sistema.",
+        action: "Verifique se o username está digitado corretamente.",
       });
     }
 
     return results.rows[0];
   }
 }
+
 async function create(userInputValues) {
   await validateUniqueEmail(userInputValues.email);
   await validateUniqueUsername(userInputValues.username);
@@ -41,13 +42,13 @@ async function create(userInputValues) {
   async function validateUniqueEmail(email) {
     const results = await database.query({
       text: `
-    SELECT
-      email
-    FROM
-      users
-    WHERE
-      LOWER(email) = LOWER($1)
-    ;`,
+        SELECT
+          email
+        FROM
+          users
+        WHERE
+          LOWER(email) = LOWER($1)
+        ;`,
       values: [email],
     });
 
@@ -62,20 +63,20 @@ async function create(userInputValues) {
   async function validateUniqueUsername(username) {
     const results = await database.query({
       text: `
-    SELECT
-      username
-    FROM
-      users
-    WHERE
-      LOWER(username) = LOWER($1)
-    ;`,
+        SELECT
+          username
+        FROM
+          users
+        WHERE
+          LOWER(username) = LOWER($1)
+        ;`,
       values: [username],
     });
 
     if (results.rowCount > 0) {
       throw new ValidationError({
-        message: "O nome de usuário informado já está sendo utilizado.",
-        action: "Utilize outro nome de usuário para realizar o cadastro.",
+        message: "O username informado já está sendo utilizado.",
+        action: "Utilize outro username para realizar o cadastro.",
       });
     }
   }
@@ -84,7 +85,7 @@ async function create(userInputValues) {
     const results = await database.query({
       text: `
     INSERT INTO
-      users(username, email, password)
+          users (username, email, password)
     VALUES
       ($1, $2, $3)
     RETURNING
@@ -96,7 +97,6 @@ async function create(userInputValues) {
         userInputValues.password,
       ],
     });
-
     return results.rows[0];
   }
 }

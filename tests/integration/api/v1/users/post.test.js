@@ -12,7 +12,9 @@ describe("POST /api/v1/users", () => {
     test("With unique and valid data", async () => {
       const response = await fetch("http://localhost:3000/api/v1/users", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           username: "rodrigolopes",
           email: "emailteste@email.com",
@@ -41,10 +43,12 @@ describe("POST /api/v1/users", () => {
     test("With duplicated 'email'", async () => {
       const response1 = await fetch("http://localhost:3000/api/v1/users", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           username: "emailduplicado1",
-          email: "emailduplicado@email.com",
+          email: "duplicado@email.com",
           password: "senha123",
         }),
       });
@@ -53,10 +57,12 @@ describe("POST /api/v1/users", () => {
 
       const response2 = await fetch("http://localhost:3000/api/v1/users", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           username: "emailduplicado2",
-          email: "emailDuplicado@email.com",
+          email: "Duplicado@email.com",
           password: "senha123",
         }),
       });
@@ -73,10 +79,12 @@ describe("POST /api/v1/users", () => {
       });
     });
 
-    test("With duplicated 'name'", async () => {
+    test("With duplicated 'username'", async () => {
       const response1 = await fetch("http://localhost:3000/api/v1/users", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           username: "nomeduplicado",
           email: "email1@email.com",
@@ -88,7 +96,9 @@ describe("POST /api/v1/users", () => {
 
       const response2 = await fetch("http://localhost:3000/api/v1/users", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           username: "nomeDuplicado",
           email: "email2@email.com",
@@ -102,8 +112,8 @@ describe("POST /api/v1/users", () => {
 
       expect(response2Body).toEqual({
         name: "ValidationError",
-        message: "O nome de usuário informado já está sendo utilizado.",
-        action: "Utilize outro nome de usuário para realizar o cadastro.",
+        message: "O username informado já está sendo utilizado.",
+        action: "Utilize outro username para realizar o cadastro.",
         status_code: 400,
       });
     });
