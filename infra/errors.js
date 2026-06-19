@@ -38,15 +38,14 @@ export class ServiceError extends Error {
   }
 }
 
-export class NotFoundError extends Error {
+export class ValidationError extends Error {
   constructor({ cause, message, action }) {
-    super(message || "Não foi possível encontrar este recurso no sistema.", {
+    super(message || "Um erro de validação ocorreu.", {
       cause,
     });
-    this.name = "NotFoundError";
-    this.action =
-      action || "Verifique se os parâmetros enviados na consulta estão certos.";
-    this.statusCode = 404;
+    this.name = "ValidationError";
+    this.action = action || "Ajuste os dados enviados e tente novamente.";
+    this.statusCode = 400;
   }
 
   toJSON() {
@@ -59,14 +58,15 @@ export class NotFoundError extends Error {
   }
 }
 
-export class ValidationError extends Error {
+export class NotFoundError extends Error {
   constructor({ cause, message, action }) {
-    super(message || "Um erro de validação ocrreu", {
+    super(message || "Não foi possível encontrar este recurso no sistema.", {
       cause,
     });
-    this.name = "ValidationError";
-    this.action = action || "Ajuste os dados enviados e tente novamente.";
-    this.statusCode = 400;
+    this.name = "NotFoundError";
+    this.action =
+      action || "Verifique se os parâmetros enviados na consulta estão certos.";
+    this.statusCode = 404;
   }
 
   toJSON() {
