@@ -48,7 +48,7 @@ describe("POST /api/v1/users", () => {
       );
 
       const incorrectPasswordMatch = await password.compare(
-        "senhaErrada",
+        "SenhaErrada",
         userInDatabase.password,
       );
 

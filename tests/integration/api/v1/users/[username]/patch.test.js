@@ -64,11 +64,11 @@ describe("PATCH /api/v1/users/[username]", () => {
 
     test("With duplicated 'email'", async () => {
       await orchestrator.createUser({
-        email: "email1@curso.dev",
+        email: "email1@email.com",
       });
 
       const createdUser2 = await orchestrator.createUser({
-        email: "email2@curso.dev",
+        email: "email2@email.com",
       });
 
       const response = await fetch(
@@ -79,7 +79,7 @@ describe("PATCH /api/v1/users/[username]", () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            email: "email1@curso.dev",
+            email: "email1@email.com",
           }),
         },
       );
@@ -144,7 +144,7 @@ describe("PATCH /api/v1/users/[username]", () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            email: "uniqueEmail2@curso.dev",
+            email: "uniqueEmail2@email.com",
           }),
         },
       );
@@ -156,7 +156,7 @@ describe("PATCH /api/v1/users/[username]", () => {
       expect(responseBody).toEqual({
         id: responseBody.id,
         username: createdUser.username,
-        email: "uniqueEmail2@curso.dev",
+        email: "uniqueEmail2@email.com",
         password: responseBody.password,
         created_at: responseBody.created_at,
         updated_at: responseBody.updated_at,
